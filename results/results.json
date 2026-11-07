@@ -1,0 +1,122 @@
+{
+ "primary_metric": "span_recall",
+ "direction": "max",
+ "metric_labels": {
+  "span_recall": "Rappel des spans",
+  "span_precision": "Précision des spans",
+  "span_f1": "F1 des spans",
+  "value_leak_rate": "Taux de fuite par valeur",
+  "worst_type_recall": "Pire rappel par type",
+  "median_latency_ms": "Latence médiane (ms)",
+  "p95_latency_ms": "Latence p95 (ms)"
+ },
+ "dataset": {
+  "name": "TheoDB/french-pii-eval",
+  "config": "default",
+  "split": "test",
+  "n_examples": 2926
+ },
+ "approaches": [
+  {
+   "name": "Regex seul",
+   "role": "reference",
+   "metrics": {
+    "span_recall": 0.23778882714243932,
+    "span_precision": 0.7581322140608604,
+    "span_f1": 0.3620274349914708,
+    "value_leak_rate": 0.7630261995878717,
+    "worst_type_recall": 0.0,
+    "median_latency_ms": 0.06,
+    "p95_latency_ms": 0.14
+   },
+   "ci95": {
+    "span_recall": [
+     0.22805712585540017,
+     0.24812140857521733
+    ],
+    "span_precision": [
+     0.7374866879659212,
+     0.7796875
+    ],
+    "span_f1": [
+     0.3488490546816932,
+     0.37574462310286944
+    ],
+    "value_leak_rate": [
+     0.7524538106235565,
+     0.7729809104258444
+    ]
+   },
+   "latency_ms": {
+    "p50": 0.06,
+    "p95": 0.14
+   },
+   "notes": "14 motifs, un texte à la fois"
+  },
+  {
+   "name": "Hybride regex + NER CamemBERT",
+   "role": "new",
+   "metrics": {
+    "span_recall": 0.6572097104416496,
+    "span_precision": 0.7378986866791745,
+    "span_f1": 0.6952207917442477,
+    "value_leak_rate": 0.3360317927583162,
+    "worst_type_recall": 0.18042226487523993,
+    "median_latency_ms": 77.93,
+    "p95_latency_ms": 136.74
+   },
+   "ci95": {
+    "span_recall": [
+     0.6455807158509861,
+     0.6690462592804112
+    ],
+    "span_precision": [
+     0.7244704992435703,
+     0.7511061946902655
+    ],
+    "span_f1": [
+     0.6854957098895804,
+     0.7040970490202634
+    ],
+    "value_leak_rate": [
+     0.32466765140324966,
+     0.3481726575424876
+    ]
+   },
+   "latency_ms": {
+    "p50": 77.93,
+    "p95": 136.74
+   },
+   "notes": "Jean-Baptiste/camembert-ner (dossier local), 2 fils, cpu, score minimal 0.5"
+  }
+ ],
+ "phase": "public",
+ "scale": "full",
+ "seed": 42,
+ "date": "2026-11-07T02:31:39+00:00",
+ "environment": {
+  "python": "3.12.16",
+  "system": "Linux-7.0.0-1019-azure-x86_64-with-glibc2.41",
+  "cpu": 4,
+  "ram_gb": 15.6,
+  "device": "cpu",
+  "gpu": null,
+  "scale": "full",
+  "versions": {
+   "torch": "2.15.0+cpu",
+   "transformers": "5.22.2",
+   "datasets": "5.1.0",
+   "sentence-transformers": "6.2.0",
+   "scikit-learn": "1.9.1",
+   "numpy": "2.5.4",
+   "pandas": "3.1.1",
+   "openai": "3.46.0",
+   "xgboost": "3.4.1"
+  }
+ },
+ "service_calls": {
+  "n": 0,
+  "failures": 0,
+  "seconds": 0
+ }
+}
